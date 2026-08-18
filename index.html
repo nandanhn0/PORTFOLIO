@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nandan H N — Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#060b18;color:#e8e4dc;font-family:'Syne',sans-serif;overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+#cur{width:10px;height:10px;background:#f4631e;border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .15s,height .15s;mix-blend-mode:exclusion}
+#cur-r{width:32px;height:32px;border:1px solid rgba(244,99,30,0.6);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .08s ease,top .08s ease,width .2s,height .2s}
+
+/* NOISE */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9000;opacity:.5}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#f4631e,#ffb347);z-index:9999;width:0;transition:width .1s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;padding:1.2rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:500;background:linear-gradient(to bottom,rgba(6,11,24,.95) 0%,transparent 100%);backdrop-filter:blur(4px)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.12em;color:#e8e4dc}
+.nav-logo span{color:#f4631e}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:#7a8399;text-decoration:none;transition:color .25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#f4631e;transition:width .25s}
+.nav-links a:hover{color:#e8e4dc}
+.nav-links a:hover::after{width:100%}
+
+/* ===== HERO ===== */
+#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 5% 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);animation:orb 7s ease-in-out infinite alternate}
+.o1{width:560px;height:560px;background:radial-gradient(circle,rgba(244,99,30,.28) 0%,transparent 70%);top:-80px;right:-80px;animation-delay:0s}
+.o2{width:480px;height:480px;background:radial-gradient(circle,rgba(26,58,110,.5) 0%,transparent 70%);bottom:-80px;left:-80px;animation-delay:-3.5s}
+.o3{width:280px;height:280px;background:radial-gradient(circle,rgba(255,179,71,.12) 0%,transparent 70%);top:40%;left:45%;animation-delay:-1.5s}
+@keyframes orb{from{transform:translate(0,0) scale(1)}to{transform:translate(25px,-25px) scale(1.08)}}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:72px 72px}
+
+.hero-inner{position:relative;z-index:10;width:100%;display:flex;align-items:center;gap:4rem;flex-wrap:wrap}
+.hero-left{flex:1;min-width:280px}
+.h-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:#f4631e;margin-bottom:1.4rem;display:flex;align-items:center;gap:.8rem}
+.h-tag::before{content:'';display:inline-block;width:36px;height:1px;background:#f4631e}
+h1.name{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.8rem,8.5vw,8.5rem);line-height:.9;letter-spacing:.01em;color:#e8e4dc}
+h1.name span{color:#f4631e}
+.h-sub{font-size:clamp(.9rem,1.6vw,1.15rem);font-weight:400;color:#7a8399;margin-top:1rem;letter-spacing:.03em;line-height:1.5}
+.h-btns{margin-top:2.2rem;display:flex;gap:1rem;flex-wrap:wrap}
+.btn-o{padding:.85rem 2rem;background:#f4631e;color:#fff;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:none;cursor:none;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:background .25s,transform .25s;display:inline-block}
+.btn-o:hover{background:#ffb347;transform:translateY(-2px)}
+.btn-g{padding:.85rem 2rem;background:transparent;color:#e8e4dc;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.12);cursor:none;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:border-color .25s,color .25s;display:inline-block}
+.btn-g:hover{border-color:#f4631e;color:#f4631e}
+
+/* Photo */
+.hero-right{flex:0 0 auto;display:flex;justify-content:center;align-items:center}
+.photo-wrap{position:relative;width:300px;height:340px}
+.photo-clip{width:100%;height:100%;clip-path:polygon(24px 0,100% 0,100% calc(100% - 24px),calc(100% - 24px) 100%,0 100%,0 24px);overflow:hidden;background:#0d1f3c;position:relative}
+.photo-clip img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:brightness(1.05) contrast(1.05) saturate(1.1)}
+.photo-clip::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(6,11,24,.65) 100%)}
+.photo-wrap::before{content:'';position:absolute;inset:-2px;clip-path:polygon(24px 0,100% 0,100% calc(100% - 24px),calc(100% - 24px) 100%,0 100%,0 24px);background:linear-gradient(135deg,#f4631e 0%,transparent 45%,transparent 55%,#f4631e 100%);z-index:-1}
+.ph-tl,.ph-br{position:absolute;width:22px;height:22px}
+.ph-tl{top:-1px;left:-1px;border-top:2px solid #f4631e;border-left:2px solid #f4631e}
+.ph-br{bottom:-1px;right:-1px;border-bottom:2px solid #f4631e;border-right:2px solid #f4631e}
+.photo-stats{position:absolute;bottom:12px;left:12px;right:12px;display:flex;gap:.4rem;z-index:10}
+.ps{flex:1;background:rgba(6,11,24,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.07);padding:.5rem .3rem;text-align:center}
+.ps-n{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#f4631e;line-height:1}
+.ps-l{font-family:'JetBrains Mono',monospace;font-size:.45rem;color:#7a8399;letter-spacing:.08em;text-transform:uppercase;margin-top:.15rem}
+
+.scroll-hint{position:absolute;bottom:2.5rem;left:5%;display:flex;align-items:center;gap:.8rem;z-index:10}
+.scroll-hint span{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:#7a8399;animation:blink 2s ease-in-out infinite}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,#f4631e,transparent)}
+@keyframes blink{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ===== SECTIONS ===== */
+section{padding:6rem 5%;position:relative}
+.s-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:#f4631e;margin-bottom:.8rem;display:flex;align-items:center;gap:1rem}
+.s-label::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(244,99,30,.3),transparent)}
+.s-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,4.5vw,4.5rem);line-height:.92;color:#e8e4dc;margin-bottom:2.8rem}
+.s-title span{color:#f4631e}
+
+/* ABOUT */
+#about{background:#08101f;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-p{font-size:.95rem;line-height:1.85;color:#7a8399;margin-bottom:1.2rem}
+.about-p strong{color:#e8e4dc}
+.skills-wrap{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}
+.sk{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.08em;padding:.35rem .8rem;border:1px solid rgba(255,255,255,.08);color:#7a8399;background:rgba(255,255,255,.03);transition:all .25s;cursor:none}
+.sk:hover{border-color:#f4631e;color:#f4631e;background:rgba(244,99,30,.07)}
+.metrics{display:grid;gap:.8rem}
+.metric{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-left:3px solid #f4631e;transition:all .3s}
+.metric:hover{background:rgba(244,99,30,.05);border-left-color:#ffb347}
+.m-icon{font-size:1.5rem;flex-shrink:0}
+.m-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:#e8e4dc}
+.m-sub{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#7a8399;margin-top:.18rem;letter-spacing:.04em}
+
+/* PROJECTS */
+#projects{background:#060b18}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
+.pc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:1.8rem;position:relative;overflow:hidden;transition:all .35s cubic-bezier(.23,1,.32,1);cursor:none}
+.pc::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(244,99,30,.07) 0%,transparent 60%);opacity:0;transition:opacity .3s}
+.pc:hover::before{opacity:1}
+.pc:hover{border-color:rgba(244,99,30,.25);transform:translateY(-5px);box-shadow:0 16px 50px rgba(0,0,0,.5)}
+.pc-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:rgba(244,99,30,.09);line-height:1;margin-bottom:.3rem}
+.pc-cat{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;color:#f4631e;margin-bottom:.6rem}
+.pc-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#e8e4dc;margin-bottom:.7rem;line-height:1.25}
+.pc-desc{font-size:.82rem;line-height:1.75;color:#7a8399;margin-bottom:1.3rem}
+.pc-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.3rem}
+.pt{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.08em;padding:.22rem .55rem;background:rgba(244,99,30,.1);border:1px solid rgba(244,99,30,.2);color:#f4631e}
+.pc-link{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:#7a8399;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:color .25s}
+.pc-link::after{content:'→';transition:transform .25s}
+.pc-link:hover{color:#f4631e}
+.pc-link:hover::after{transform:translateX(4px)}
+.pc.feat{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;border-color:rgba(244,99,30,.15)}
+.feat-badge{position:absolute;top:1.4rem;right:1.4rem;font-family:'JetBrains Mono',monospace;font-size:.48rem;letter-spacing:.2em;padding:.28rem .65rem;background:#f4631e;color:#fff;text-transform:uppercase}
+.pc.feat .pc-num{font-size:5.5rem}
+
+/* EXPERIENCE */
+#experience{background:#08101f}
+.timeline{position:relative;padding-left:2.5rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,#f4631e 0%,rgba(244,99,30,.1) 100%)}
+.ti{position:relative;margin-bottom:2.8rem}
+.ti-dot{position:absolute;left:-2.5rem;top:.35rem;width:9px;height:9px;background:#f4631e;border-radius:50%;transform:translateX(-4px)}
+.ti-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(244,99,30,.3)}
+.ti-date{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.2em;color:#f4631e;text-transform:uppercase;margin-bottom:.4rem}
+.ti-role{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:#e8e4dc}
+.ti-co{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#7a8399;letter-spacing:.07em;margin-bottom:.6rem}
+.ti-desc{font-size:.83rem;line-height:1.75;color:#7a8399}
+
+/* RESEARCH */
+#research{background:#060b18}
+.res-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-left:4px solid #f4631e;padding:2.2rem;position:relative;overflow:hidden;transition:all .3s}
+.res-card::after{content:'IEEE';position:absolute;right:2rem;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:5.5rem;color:rgba(244,99,30,.04);letter-spacing:.1em;pointer-events:none}
+.res-card:hover{border-left-color:#ffb347;background:rgba(244,99,30,.04)}
+.res-pub{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;color:#f4631e;margin-bottom:.7rem}
+.res-title{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;color:#e8e4dc;margin-bottom:.9rem;line-height:1.3;max-width:65%}
+.res-desc{font-size:.83rem;line-height:1.75;color:#7a8399;max-width:60%}
+
+/* CERTS */
+#certifications{background:#08101f}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.cc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:1.4rem;text-align:center;transition:all .3s;cursor:none}
+.cc:hover{border-color:#f4631e;background:rgba(244,99,30,.05);transform:translateY(-4px)}
+.cc-icon{font-size:1.8rem;margin-bottom:.7rem}
+.cc-name{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;color:#e8e4dc;margin-bottom:.25rem}
+.cc-org{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:#f4631e;text-transform:uppercase}
+
+/* CONTACT */
+#contact{background:#060b18;text-align:center;padding:7rem 5%}
+.c-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,7.5vw,7.5rem);line-height:.9;letter-spacing:-.01em;color:#e8e4dc;margin-bottom:2.8rem}
+.c-big span{-webkit-text-stroke:2px #f4631e;color:transparent}
+.c-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.cl{display:flex;align-items:center;gap:.7rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:#7a8399;text-decoration:none;padding:.75rem 1.4rem;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.03);transition:all .25s}
+.cl:hover{color:#f4631e;border-color:#f4631e;background:rgba(244,99,30,.06)}
+.cl-icon{font-size:.9rem}
+
+footer{padding:1.8rem 5%;border-top:1px solid rgba(255,255,255,.06);background:#08101f;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer p{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.08em;color:#7a8399}
+footer span{color:#f4631e}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.a1{animation:fadeUp .7s .1s both}
+.a2{animation:fadeUp .7s .25s both}
+.a3{animation:fadeUp .7s .38s both}
+.a4{animation:fadeUp .7s .5s both}
+.a5{animation:fadeUp .7s .62s both}
+
+/* Scroll reveal — starts visible, JS enhances */
+.rv{opacity:1;transform:translateY(0);transition:opacity .65s cubic-bezier(.23,1,.32,1),transform .65s cubic-bezier(.23,1,.32,1)}
+.rv.hide{opacity:0;transform:translateY(32px)}
+.rv.on{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  .nav-links{display:none}
+  #about{grid-template-columns:1fr}
+  .hero-inner{flex-direction:column;text-align:center;gap:2.5rem}
+  .h-tag{justify-content:center}
+  .h-btns{justify-content:center}
+  .hero-right{width:100%;justify-content:center}
+  .photo-wrap{width:260px;height:300px}
+  .pc.feat{grid-column:1;display:block}
+  .res-title,.res-desc{max-width:100%}
+  .scroll-hint{display:none}
+  footer{flex-direction:column;text-align:center}
+}
+@media(max-width:560px){
+  section{padding:4rem 5%}
+  #hero{padding:6rem 5% 4rem}
+  .c-links{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<nav>
+  <div class="nav-logo">NH<span>N</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#research">Research</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="grid-bg"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="h-tag a1">Final Year CSE — NHCE Bangalore</div>
+      <h1 class="name a2">NANDAN<br>H <span>N</span></h1>
+      <p class="h-sub a3">Software Engineer · AI Researcher · Cybersecurity Enthusiast</p>
+      <div class="h-btns a4">
+        <a href="#projects" class="btn-o">View My Work</a>
+        <a href="#contact" class="btn-g">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-right a5">
+      <div class="photo-wrap">
+        <div class="photo-clip">
+          <img src="image.jpg" alt="Nandan H N"/>
+        </div>
+        <div class="ph-tl"></div>
+        <div class="ph-br"></div>
+        <div class="photo-stats">
+          <div class="ps"><div class="ps-n">8.02</div><div class="ps-l">CGPA</div></div>
+          <div class="ps"><div class="ps-n">1</div><div class="ps-l">IEEE</div></div>
+          <div class="ps"><div class="ps-n">4+</div><div class="ps-l">Certs</div></div>
+          <div class="ps"><div class="ps-n">8</div><div class="ps-l">Modules</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="rv">
+    <div class="s-label">About Me</div>
+    <h2 class="s-title">Building at the<br><span>intersection</span><br>of code & craft</h2>
+    <p class="about-p">I'm a <strong>Final Year Computer Science student</strong> at New Horizon College of Engineering, Bangalore — CGPA 8.02 — constantly pushing at the overlap between intelligent systems, security, and elegant software.</p>
+    <p class="about-p">From publishing <strong>IEEE research on Smart Agriculture</strong> to building penetration testing toolkits under CyberFyx, I thrive on work that demands both depth and polish. Currently deep in placements and a cybersecurity internship.</p>
+    <div class="skills-wrap">
+      <span class="sk">Python</span><span class="sk">Java</span><span class="sk">Flask</span><span class="sk">Django</span>
+      <span class="sk">Next.js</span><span class="sk">MySQL</span><span class="sk">MongoDB</span><span class="sk">AWS</span>
+      <span class="sk">Figma</span><span class="sk">GitHub</span><span class="sk">RPA</span><span class="sk">Pen Testing</span>
+      <span class="sk">Manual Testing</span><span class="sk">HTML / CSS</span>
+    </div>
+  </div>
+  <div class="metrics rv">
+    <div class="metric"><div class="m-icon">🎓</div><div><div class="m-title">New Horizon College of Engineering</div><div class="m-sub">B.E. Computer Science · 2022–2026 · CGPA 8.02</div></div></div>
+    <div class="metric"><div class="m-icon">🛡️</div><div><div class="m-title">CyberFyx — Pentest Internship</div><div class="m-sub">Penetration Testing · 8 Security Modules</div></div></div>
+    <div class="metric"><div class="m-icon">📡</div><div><div class="m-title">Technical Support Intern</div><div class="m-sub">Freedom · Oct 2022 – Jan 2023</div></div></div>
+    <div class="metric"><div class="m-icon">📄</div><div><div class="m-title">IEEE Published Researcher</div><div class="m-sub">RTET 2025 · Smart Agriculture System</div></div></div>
+    <div class="metric"><div class="m-icon">🤖</div><div><div class="m-title">AI & Traditional Arts Explorer</div><div class="m-sub">AI Video Gen · Yakshagana/Theyyam Aesthetics</div></div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="s-label rv">Selected Work</div>
+  <h2 class="s-title rv">Projects that<br><span>ship.</span></h2>
+  <div class="proj-grid">
+    <div class="pc feat rv">
+      <div class="feat-badge">Featured</div>
+      <div>
+        <div class="pc-num">01</div>
+        <div class="pc-cat">AI · Agriculture · IoT</div>
+        <h3 class="pc-title">Smart Agriculture System for Greenhouse Management</h3>
+      </div>
+      <div>
+        <p class="pc-desc">An AI-powered greenhouse management system that monitors soil moisture, temperature, and humidity in real-time — triggering automated responses to maintain optimal growing conditions. Published and presented at IEEE RTET 2025.</p>
+        <div class="pc-tags"><span class="pt">Python</span><span class="pt">IoT Sensors</span><span class="pt">Machine Learning</span><span class="pt">Automation</span><span class="pt">IEEE Published</span></div>
+        <a href="#research" class="pc-link">View Research</a>
+      </div>
+    </div>
+    <div class="pc rv">
+      <div class="pc-num">02</div>
+      <div class="pc-cat">Cybersecurity · Pentest</div>
+      <h3 class="pc-title">CyberFyx Toolkit</h3>
+      <p class="pc-desc">A comprehensive penetration testing reference covering 8 security modules — from infrastructure recon and web fingerprinting to OSINT and structured reporting. Includes website, deck, and Notion docs.</p>
+      <div class="pc-tags"><span class="pt">Recon</span><span class="pt">OSINT</span><span class="pt">CMS Analysis</span><span class="pt">Security Headers</span></div>
+      <a href="#contact" class="pc-link">Inquire</a>
+    </div>
+    <div class="pc rv">
+      <div class="pc-num">03</div>
+      <div class="pc-cat">AI · NLP · FinTech</div>
+      <h3 class="pc-title">Multilingual Loan Advisor AI</h3>
+      <p class="pc-desc">An intelligent loan advisory system with multilingual NLP support, helping users navigate financial products through natural language queries — built with Python and Flask.</p>
+      <div class="pc-tags"><span class="pt">Python</span><span class="pt">NLP</span><span class="pt">Flask</span><span class="pt">MongoDB</span></div>
+      <a href="#contact" class="pc-link">Learn More</a>
+    </div>
+    <div class="pc rv">
+      <div class="pc-num">04</div>
+      <div class="pc-cat">Web · Design</div>
+      <h3 class="pc-title">This Portfolio</h3>
+      <p class="pc-desc">A cinematic portfolio with dual-tone lighting, glassmorphism cards, scroll animations, and a custom cursor — built with pure HTML/CSS/JS, no frameworks.</p>
+      <div class="pc-tags"><span class="pt">HTML/CSS</span><span class="pt">JavaScript</span><span class="pt">Animations</span><span class="pt">Glassmorphism</span></div>
+      <a href="https://nandanhn.online" target="_blank" class="pc-link">Live Site</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="s-label rv">Timeline</div>
+  <h2 class="s-title rv">Experience &<br><span>Education</span></h2>
+  <div class="timeline">
+    <div class="ti rv"><div class="ti-dot"></div><div class="ti-date">2025 – Present</div><div class="ti-role">Penetration Testing Intern</div><div class="ti-co">CyberFyx · Cybersecurity</div><p class="ti-desc">Building a complete penetration testing toolkit covering 8 security modules — infrastructure recon, network scanning, web fingerprinting, endpoint discovery, CMS vulnerability analysis, security header analysis, OSINT, and reporting frameworks.</p></div>
+    <div class="ti rv"><div class="ti-dot"></div><div class="ti-date">January 2025</div><div class="ti-role">IEEE Research Publication</div><div class="ti-co">RTET Conference 2025 · Smart Agriculture</div><p class="ti-desc">Published and presented research on AI-driven greenhouse management systems at an IEEE-affiliated conference, demonstrating real-world application of ML in precision agriculture.</p></div>
+    <div class="ti rv"><div class="ti-dot"></div><div class="ti-date">Oct 2022 – Jan 2023</div><div class="ti-role">Technical Support Intern</div><div class="ti-co">Freedom · Technical Operations</div><p class="ti-desc">Provided technical support and troubleshooting, gaining hands-on experience with system diagnostics, client communication, and issue resolution workflows.</p></div>
+    <div class="ti rv"><div class="ti-dot"></div><div class="ti-date">2022 – 2026</div><div class="ti-role">B.E. Computer Science & Engineering</div><div class="ti-co">New Horizon College of Engineering, Bangalore · CGPA 8.02</div><p class="ti-desc">Core CS — OS, DBMS, CN, DSA, OOP, Software Engineering — alongside applied ML, web development, and cybersecurity. Active in placement preparation and peer collaboration.</p></div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="s-label rv">Publications</div>
+  <h2 class="s-title rv">IEEE<br><span>Research</span></h2>
+  <div class="res-card rv">
+    <div class="res-pub">IEEE · RTET 2025 · Published</div>
+    <h3 class="res-title">Smart Agriculture System for Greenhouse Management</h3>
+    <p class="res-desc">This paper presents an intelligent greenhouse management architecture integrating IoT sensors, real-time data monitoring, and machine learning models to automate climate control, irrigation, and resource optimization — demonstrating measurable improvements in crop yield and water efficiency through automated decision loops.</p>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="s-label rv">Credentials</div>
+  <h2 class="s-title rv">Certifications &<br><span>Awards</span></h2>
+  <div class="certs-grid">
+    <div class="cc rv"><div class="cc-icon">☁️</div><div class="cc-name">AWS Certified</div><div class="cc-org">Amazon Web Services</div></div>
+    <div class="cc rv"><div class="cc-icon">🤖</div><div class="cc-name">IBM SkillsBuild</div><div class="cc-org">IBM · AI & Cloud</div></div>
+    <div class="cc rv"><div class="cc-icon">📊</div><div class="cc-name">NPTEL Certified</div><div class="cc-org">IIT · NPTEL Program</div></div>
+    <div class="cc rv"><div class="cc-icon">⚡</div><div class="cc-name">DSA Boot Camp</div><div class="cc-org">Unstop · Data Structures</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="s-label rv" style="justify-content:center">Let's Connect</div>
+  <h1 class="c-big rv">LET'S<br><span>BUILD</span><br>SOMETHING</h1>
+  <div class="c-links rv">
+    <a href="mailto:nhn3804@gmail.com" class="cl"><span class="cl-icon">📧</span>nhn3804@gmail.com</a>
+    <a href="tel:+917619391830" class="cl"><span class="cl-icon">📱</span>+91 76193 91830</a>
+    <a href="https://linkedin.com/in/nandanhn0" target="_blank" class="cl"><span class="cl-icon">💼</span>linkedin.com/in/nandanhn0</a>
+    <a href="https://nandanhn.online" target="_blank" class="cl"><span class="cl-icon">🌐</span>nandanhn.online</a>
+  </div>
+  <div class="rv"><a href="mailto:nhn3804@gmail.com" class="btn-o" style="margin-top:.5rem">Send Message →</a></div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Nandan H N</span> · Bangalore, India</p>
+  <p>Built with <span>♥</span> · CSE @ NHCE</p>
+</footer>
+
+<script>
+// Cursor
+const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
+let rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';rx=e.clientX;ry=e.clientY;
+});
+setInterval(()=>{curR.style.left=rx+'px';curR.style.top=ry+'px';},60);
+document.querySelectorAll('a,button,.pc,.cc,.sk,.metric').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';curR.style.width='52px';curR.style.height='52px'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';curR.style.width='32px';curR.style.height='32px'});
+});
+
+// Progress bar
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+});
+
+// Scroll reveal — hide first, then reveal on scroll
+// Only activate if JS is running properly
+window.addEventListener('DOMContentLoaded',()=>{
+  const items=document.querySelectorAll('.rv');
+  // Add hide class to items not in initial viewport
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.remove('hide');e.target.classList.add('on')}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  items.forEach(el=>{
+    const rect=el.getBoundingClientRect();
+    if(rect.top>window.innerHeight){
+      el.classList.add('hide');
+    }
+    obs.observe(el);
+  });
+});
+
+// Project card glow
+document.querySelectorAll('.pc').forEach(c=>{
+  c.addEventListener('mousemove',e=>{
+    const r=c.getBoundingClientRect();
+    c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+  });
+});
+
+// Orb parallax
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  const o1=document.querySelector('.o1'),o2=document.querySelector('.o2');
+  if(o1)o1.style.transform=`translate(${y*.035}px,${-y*.025}px)`;
+  if(o2)o2.style.transform=`translate(${-y*.025}px,${y*.02}px)`;
+});
+</script>
+</body>
+</html>
